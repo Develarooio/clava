@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108145036) do
+ActiveRecord::Schema.define(version: 20171108151416) do
 
   create_table "climbs", force: :cascade do |t|
     t.integer "route_id"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20171108145036) do
     t.string "name"
     t.string "grade"
     t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "s3_file_references", force: :cascade do |t|
+    t.string "object_key"
+    t.string "bucket_name"
+    t.string "filename"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
