@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108151416) do
+ActiveRecord::Schema.define(version: 20171108151858) do
 
   create_table "climbs", force: :cascade do |t|
     t.integer "route_id"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 20171108151416) do
     t.string "filename"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "file_referable_type"
+    t.integer "file_referable_id"
+    t.index ["file_referable_id", "file_referable_type"], name: "file_referable_index"
   end
 
 end
