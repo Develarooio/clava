@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108151858) do
+ActiveRecord::Schema.define(version: 20171115180745) do
 
   create_table "climbs", force: :cascade do |t|
     t.integer "route_id"
@@ -35,9 +35,18 @@ ActiveRecord::Schema.define(version: 20171108151858) do
     t.string "filename"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "file_referable_type"
     t.integer "file_referable_id"
-    t.index ["file_referable_id", "file_referable_type"], name: "file_referable_index"
+    t.index ["file_referable_id", nil], name: "file_referable_index"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index [nil], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
